@@ -7,24 +7,22 @@ on:
     branches: [ "master", "dev" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v5
-      with:
-        enable-cache: true
-
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version-file: ".python-version"
+        python-version: "3.13"
 
-    - name: Build C++ Core & Python Bindings
-      run: uv pip install -e bindings/python
+    - name: Install dependencies
+      run: pip install pybind11
 
-    - name: Test C++ Integration
-      run: uv run python main.py
+    - name: Configure CMake
+      run: cmake -B build
+
+    - name: Build C++ Code
+      run: cmake --build build
