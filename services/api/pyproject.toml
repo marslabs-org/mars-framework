@@ -1,0 +1,5 @@
+[project]
+name = "services-api"
+version = "0.1.0"
+description = "API Services for Mars Framework"
+requires-python = ">=3.13.0"

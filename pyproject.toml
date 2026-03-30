@@ -1,9 +1,13 @@
 [project]
-name = "mars-framework"
-version = "0.1.0"
-description = "Add your description here"
+name = "mars-framework-workspace"
+version = "0.0.1"
+description = "Monorepo workspace for Mars Framework"
 readme = "README.md"
 requires-python = ">=3.13.0"
-dependencies = [
-    "pydantic==2.12.5",
+
+[tool.uv.workspace]
+members = [
+    "bindings/python",
+    "services/api",
+    # "shared/*" # Uncomment if shared python packages are moved here
 ]
