@@ -22,7 +22,7 @@ jobs:
       run: pip install pybind11
 
     - name: Configure CMake
-      run: cmake -B build
+      run: cmake -B build -DCMAKE_PREFIX_PATH="$(python -c 'import pybind11; print(pybind11.get_cmake_dir())')"
 
     - name: Check Syntax (Compile)
       run: cmake --build build
